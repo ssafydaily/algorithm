@@ -163,6 +163,19 @@
   
 
       
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../03_Sorting/01_bubble/" class="md-tabs__link">
+          Sorting
+        </a>
+      
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -311,15 +324,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#omegaomega" class="md-nav__link">
-    \Omega\Omega
+  <a href="#omega" class="md-nav__link">
+    Omega
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#thetatheta" class="md-nav__link">
-    \Theta\Theta
+  <a href="#theta" class="md-nav__link">
+    Theta
   </a>
   
 </li>
@@ -333,6 +346,60 @@
   
 </nav>
     
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Sorting
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Sorting" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Sorting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_Sorting/01_bubble/" title="거품 정렬" class="md-nav__link">
+      거품 정렬
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_Sorting/06_counting/" title="카운팅 정렬" class="md-nav__link">
+      카운팅 정렬
+    </a>
   </li>
 
         
@@ -400,15 +467,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#omegaomega" class="md-nav__link">
-    \Omega\Omega
+  <a href="#omega" class="md-nav__link">
+    Omega
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#thetatheta" class="md-nav__link">
-    \Theta\Theta
+  <a href="#theta" class="md-nav__link">
+    Theta
   </a>
   
 </li>
@@ -481,12 +548,13 @@
 <hr />
 <h3 id="big-o">Big <em>O</em><a class="headerlink" href="#big-o" title="Permanent link">&para;</a></h3>
 <ul>
+<li>최악의 경우</li>
 <li><span><span class="MathJax_Preview">O(f(n))</span><script type="math/tex">O(f(n))</script></span> 집합은 <span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 보다 빠르게 증가하지 않는 함수들의 집합을 의미한다. Big <em>O</em> 표기는 함수의 상한을 나타내기 위해 사용한다.</li>
 <li>
 <p><span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 에 대한 입력 크기 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 이 (무한히) 증가함에 따라 <span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 의 값이 얼마나 빠르게 증가하는지 나타낸다.</p>
-</li>
-<li>
-<p>점근적 증가율(asymptotic growth rate)</p>
+<ul>
+<li>점근적 증가율(asymptotic growth rate)</li>
+</ul>
 </li>
 <li>
 <p>함수 <span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 이 <span><span class="MathJax_Preview">O(g(n))</span><script type="math/tex">O(g(n))</script></span> 의 원소라 것을 표현하기 위해 <span><span class="MathJax_Preview">f(n) = O(g(n))</span><script type="math/tex">f(n) = O(g(n))</script></span> 이라 표기한다.</p>
@@ -537,21 +605,22 @@
 <td>플로이드-워샬</td>
 </tr>
 <tr>
-<td><span><span class="MathJax_Preview">2^n, 3^n . . .</span><script type="math/tex">2^n, 3^n . . .</script></span></td>
+<td><span><span class="MathJax_Preview">O(2^n)</span><script type="math/tex">O(2^n)</script></span></td>
 <td>부분집합</td>
 </tr>
 <tr>
-<td><span><span class="MathJax_Preview">n!</span><script type="math/tex">n!</script></span>`</td>
+<td><span><span class="MathJax_Preview">O(n!)</span><script type="math/tex">O(n!)</script></span></td>
 <td>순열</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h3 id="omegaomega"><span><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span><a class="headerlink" href="#omegaomega" title="Permanent link">&para;</a></h3>
+<h3 id="omega"><em>Omega</em><a class="headerlink" href="#omega" title="Permanent link">&para;</a></h3>
 <ul>
 <li>최선의 경우</li>
+<li><span><span class="MathJax_Preview">\Omega(f(n))</span><script type="math/tex">\Omega(f(n))</script></span> 집합은 <span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 보다 <strong>느리게</strong> 증가하지 않는 함수들의 집합을 의미한다.  <span><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span> 표기는 함수의 <strong>하한</strong> 을 나타내기 위해 사용한다.</li>
 <li>
-<p><span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 은 <span><span class="MathJax_Preview">\Omega(g(n))</span><script type="math/tex">\Omega(g(n))</script></span> 의 의미</p>
+<p><span><span class="MathJax_Preview">f(n) \in \Omega(g(n))</span><script type="math/tex">f(n) \in \Omega(g(n))</script></span> 의 의미</p>
 </li>
 <li>
 <p>모든 <span><span class="MathJax_Preview">n(n \ge n_0)</span><script type="math/tex">n(n \ge n_0)</script></span> 에 대해 <span><span class="MathJax_Preview">f(n) \ge cg(n)</span><script type="math/tex">f(n) \ge cg(n)</script></span> 을 만족하는 <span><span class="MathJax_Preview">c, n_0</span><script type="math/tex">c, n_0</script></span> 가 존재한다.</p>
@@ -559,7 +628,7 @@
 </ul>
 <p><img alt="bigo" src="../img/omega.png" /></p>
 <hr />
-<h3 id="thetatheta"><span><span class="MathJax_Preview">\Theta</span><script type="math/tex">\Theta</script></span><a class="headerlink" href="#thetatheta" title="Permanent link">&para;</a></h3>
+<h3 id="theta"><em>Theta</em><a class="headerlink" href="#theta" title="Permanent link">&para;</a></h3>
 <ul>
 <li>최선과 최악의 경우과 같을 경우에 사용한다. 따라서, Big <em>O</em> 로 간주해도 된다.</li>
 <li><span><span class="MathJax_Preview">\Theta(g(n)) = O(g(n)) \bigcap \Omega(g(n))</span><script type="math/tex">\Theta(g(n)) = O(g(n)) \bigcap \Omega(g(n))</script></span></li>
@@ -597,6 +666,20 @@
             </div>
           </a>
         
+        
+          <a href="../../03_Sorting/01_bubble/" title="거품 정렬" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  다음
+                </span>
+                거품 정렬
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>
