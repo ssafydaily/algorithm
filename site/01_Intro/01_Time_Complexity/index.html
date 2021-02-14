@@ -1,0 +1,803 @@
+
+
+
+<!doctype html>
+<html lang="kr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.3">
+    
+    
+      
+        <title>시간 복잡도 - Algorithms</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6e35a1a6.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a46bcfb3.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="red">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Algorithms" class="md-header-nav__button md-logo" aria-label="Algorithms">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Algorithms
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              시간 복잡도
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../00_problems/" class="md-tabs__link md-tabs__link--active">
+          Intro
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../02_Array/01_1d/" class="md-tabs__link">
+          Array
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../03_Sorting/01_bubble/" class="md-tabs__link">
+          Sorting
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Algorithms" class="md-nav__button md-logo" aria-label="Algorithms">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Algorithms
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Intro
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Intro" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Intro
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../00_problems/" title="알고리즘 문제들" class="md-nav__link">
+      알고리즘 문제들
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        시간 복잡도
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="시간 복잡도" class="md-nav__link md-nav__link--active">
+      시간 복잡도
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    시간 복잡도
+  </a>
+  
+    <nav class="md-nav" aria-label="시간 복잡도">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    알고리즘 효율성
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#big-o" class="md-nav__link">
+    Big O
+  </a>
+  
+    <nav class="md-nav" aria-label="Big O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#big-o_1" class="md-nav__link">
+    자주 사용되는 Big O 표기들
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#omega" class="md-nav__link">
+    Omega
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theta" class="md-nav__link">
+    Theta
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Array
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Array" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Array
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02_Array/01_1d/" title="1차 배열" class="md-nav__link">
+      1차 배열
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02_Array/02_2d/" title="2차 배열" class="md-nav__link">
+      2차 배열
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Sorting
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Sorting" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Sorting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_Sorting/01_bubble/" title="거품 정렬" class="md-nav__link">
+      거품 정렬
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_Sorting/02_selection/" title="선택 정렬" class="md-nav__link">
+      선택 정렬
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_Sorting/06_counting/" title="카운팅 정렬" class="md-nav__link">
+      카운팅 정렬
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    시간 복잡도
+  </a>
+  
+    <nav class="md-nav" aria-label="시간 복잡도">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    알고리즘 효율성
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#big-o" class="md-nav__link">
+    Big O
+  </a>
+  
+    <nav class="md-nav" aria-label="Big O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#big-o_1" class="md-nav__link">
+    자주 사용되는 Big O 표기들
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#omega" class="md-nav__link">
+    Omega
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theta" class="md-nav__link">
+    Theta
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>시간 복잡도</h1>
+                
+                <h2 id="_1">시간 복잡도<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">알고리즘 효율성<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>알고리즘의 효율성은 알고리즘이 실행되는 동안에 필요한 컴퓨팅 자원(비용)으로 표현한다.</p>
+<ul>
+<li>CPU, Memory, . . .</li>
+</ul>
+</li>
+<li>
+<p>효율성이 좋다는 것은 복잡도(complexity)가 낮다는 것이고, 효율성이 나쁘다는 것은 복잡도가 높다는 의미이다.</p>
+<ul>
+<li>시간 복잡도와 공간 복잡도가 주로 사용된다.</li>
+</ul>
+</li>
+<li>
+<p>문제의 크기가 커질 수록 비용이 어느 정도 증가하는지를 근사적으로 표현한다.</p>
+</li>
+<li>
+<p>알고리즘의 시간 효율성을 보기 위해 실행 시간을 측정할 수 있다. </p>
+<ul>
+<li>실험적으로 측정 : 특정 입력에 대해 실제 실행 시간 측정</li>
+<li>분석적으로 측정 : 입력 크기에 대해 어느 정도의 계산 작업이 필요한지 측정</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>점근적 표기(Asymtotic Notation)</p>
+</blockquote>
+<ul>
+<li>알고리즘의 실행 시간은 분석적으로 측정해서 시간 함수를 구해서 점근적으로 표현한다.</li>
+<li>함수들의 집합을 정의하는 방법을 사용한다.</li>
+</ul>
+<blockquote>
+<p>대표적인 표기 방법:</p>
+</blockquote>
+<ul>
+<li>Big O :   <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></li>
+<li>Omega :   <span><span class="MathJax_Preview">\Omega(n)</span><script type="math/tex">\Omega(n)</script></span></li>
+<li>Theta :   <span><span class="MathJax_Preview">\Theta(n)</span><script type="math/tex">\Theta(n)</script></span></li>
+</ul>
+<p>예를 들어, 알고리즘 <strong>A</strong> 가 <span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span> 이다. 이는, <strong>A</strong> 의 실행시간 함수가 <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 라면, <span><span class="MathJax_Preview">f \in O(n^2)</span><script type="math/tex">f \in O(n^2)</script></span> 라는 것을 의미한다.</p>
+<hr />
+<h3 id="big-o">Big <em>O</em><a class="headerlink" href="#big-o" title="Permanent link">&para;</a></h3>
+<ul>
+<li>최악의 경우</li>
+<li><span><span class="MathJax_Preview">O(f(n))</span><script type="math/tex">O(f(n))</script></span> 집합은 <span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 보다 빠르게 증가하지 않는 함수들의 집합을 의미한다. Big <em>O</em> 표기는 함수의 상한을 나타내기 위해 사용한다.</li>
+<li>
+<p><span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 에 대한 입력 크기 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 이 (무한히) 증가함에 따라 <span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 의 값이 얼마나 빠르게 증가하는지 나타낸다.</p>
+<ul>
+<li>점근적 증가율(asymptotic growth rate)</li>
+</ul>
+</li>
+<li>
+<p>함수 <span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 이 <span><span class="MathJax_Preview">O(g(n))</span><script type="math/tex">O(g(n))</script></span> 의 원소라 것을 표현하기 위해 <span><span class="MathJax_Preview">f(n) = O(g(n))</span><script type="math/tex">f(n) = O(g(n))</script></span> 이라 표기한다.</p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">f(n) \in O(g(n))</span><script type="math/tex">f(n) \in O(g(n))</script></span> 의 의미</p>
+</li>
+<li>
+<p>모든 <span><span class="MathJax_Preview">n(n \ge n_0)</span><script type="math/tex">n(n \ge n_0)</script></span> 에 대해 <span><span class="MathJax_Preview">f(n) \le cg(n)</span><script type="math/tex">f(n) \le cg(n)</script></span> 을 만족하는 <span><span class="MathJax_Preview">c, n_0</span><script type="math/tex">c, n_0</script></span> 가 존재한다.</p>
+</li>
+<li><span><span class="MathJax_Preview">10n + 3 \in O(n^2)</span><script type="math/tex">10n + 3 \in O(n^2)</script></span>    (O)</li>
+<li><span><span class="MathJax_Preview">n^2 \in O(20n)</span><script type="math/tex">n^2 \in O(20n)</script></span> (X)</li>
+</ul>
+<p><img alt="bigo" src="../img/bigo.png" /></p>
+<hr />
+<h4 id="big-o_1">자주 사용되는 Big <em>O</em> 표기들<a class="headerlink" href="#big-o_1" title="Permanent link">&para;</a></h4>
+<p>다음 표는 자두 사용되는 대표적인 Big <em>O</em> 표기법들과 잘 알려진 알고리즘들이다.</p>
+<table>
+<thead>
+<tr>
+<th>분류</th>
+<th>예</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></td>
+<td>해싱</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></td>
+<td>순차 검색</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">O(\log_2 n)</span><script type="math/tex">O(\log_2 n)</script></span></td>
+<td>이분 검색</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">O(n \log_2 n)</span><script type="math/tex">O(n \log_2 n)</script></span></td>
+<td>퀵 정렬</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">O(n^2)</span><script type="math/tex">O(n^2)</script></span></td>
+<td>선택 정렬</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">O(n^3)</span><script type="math/tex">O(n^3)</script></span></td>
+<td>플로이드-워샬</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">O(2^n)</span><script type="math/tex">O(2^n)</script></span></td>
+<td>부분집합</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">O(n!)</span><script type="math/tex">O(n!)</script></span></td>
+<td>순열</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="omega"><em>Omega</em><a class="headerlink" href="#omega" title="Permanent link">&para;</a></h3>
+<ul>
+<li>최선의 경우</li>
+<li><span><span class="MathJax_Preview">\Omega(f(n))</span><script type="math/tex">\Omega(f(n))</script></span> 집합은 <span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 보다 <strong>느리게</strong> 증가하지 않는 함수들의 집합을 의미한다.  <span><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span> 표기는 함수의 <strong>하한</strong> 을 나타내기 위해 사용한다.</li>
+<li>
+<p><span><span class="MathJax_Preview">f(n) \in \Omega(g(n))</span><script type="math/tex">f(n) \in \Omega(g(n))</script></span> 의 의미</p>
+</li>
+<li>
+<p>모든 <span><span class="MathJax_Preview">n(n \ge n_0)</span><script type="math/tex">n(n \ge n_0)</script></span> 에 대해 <span><span class="MathJax_Preview">f(n) \ge cg(n)</span><script type="math/tex">f(n) \ge cg(n)</script></span> 을 만족하는 <span><span class="MathJax_Preview">c, n_0</span><script type="math/tex">c, n_0</script></span> 가 존재한다.</p>
+</li>
+</ul>
+<p><img alt="bigo" src="../img/omega.png" /></p>
+<hr />
+<h3 id="theta"><em>Theta</em><a class="headerlink" href="#theta" title="Permanent link">&para;</a></h3>
+<ul>
+<li>최선과 최악의 경우과 같을 경우에 사용한다. 따라서, Big <em>O</em> 로 간주해도 된다.</li>
+<li><span><span class="MathJax_Preview">\Theta(g(n)) = O(g(n)) \bigcap \Omega(g(n))</span><script type="math/tex">\Theta(g(n)) = O(g(n)) \bigcap \Omega(g(n))</script></span></li>
+<li><span><span class="MathJax_Preview">\Theta(g(n))</span><script type="math/tex">\Theta(g(n))</script></span> 은 <span><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 과 동일하게 증가하는 함수들의 집합</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../00_problems/" title="알고리즘 문제들" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  이전
+                </span>
+                알고리즘 문제들
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../02_Array/01_1d/" title="1차 배열" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  다음
+                </span>
+                1차 배열
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 JongYun Jung
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a45f732b.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.c03f0417.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

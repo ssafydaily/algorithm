@@ -32,7 +32,14 @@ nav:
     - Intro:
       - '알고리즘 문제들': 01_Intro/00_problems.md
       - '시간 복잡도': 01_Intro/01_Time_Complexity.md
-    
+    - Array:
+      - '1차 배열': 02_Array/01_1d.md
+      - '2차 배열': 02_Array/02_2d.md
+    - Sorting:
+      - '거품 정렬': 03_Sorting/01_bubble.md
+      - '선택 정렬': 03_Sorting/02_selection.md
+      - '카운팅 정렬': 03_Sorting/06_counting.md
+
     
 markdown_extensions:
     - markdown.extensions.admonition
